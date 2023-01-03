@@ -15,6 +15,14 @@ export class GalaktykiService {
     return this.GalaktykiRepository.find();
   }
 
+  async findOneWithStars(ID: number): Promise<Galaktyki> {
+    const collection = await this.GalaktykiRepository.find({
+      where: { ID },
+      relations: { gwiazdy: true },
+    });
+    return collection.pop();
+  }
+
   findOne(ID: number): Promise<Galaktyki> {
     return this.GalaktykiRepository.findOneBy({ ID });
   }

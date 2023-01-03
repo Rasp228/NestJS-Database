@@ -9,6 +9,5 @@ import { GalaktykiService } from '../Service/Galaktyki.service';
   imports: [TypeOrmModule.forFeature([Galaktyki])],
   controllers: [GalaktykiController],
   providers: [GalaktykiService],
-//   exports: [GalaktykiService]
 })
 export class GalaktykiModule {}

@@ -1,15 +1,22 @@
-import { Entity, PrimaryGeneratedColumn, Column, OneToMany, JoinTable } from "typeorm"
-import { Gwiazdy } from "./Gwiazdy.entity";
+import {
+  Entity,
+  PrimaryGeneratedColumn,
+  Column,
+  OneToMany,
+  JoinTable,
+  JoinColumn,
+} from 'typeorm';
+import { Gwiazdy } from './Gwiazdy.entity';
 
 @Entity()
 export class Galaktyki {
-    @PrimaryGeneratedColumn()
-    ID: number;
+  @PrimaryGeneratedColumn()
+  ID: number;
 
-    @Column({type: 'int'})
-    Nazwa: string;
+  @Column({ type: 'char' })
+  Nazwa: string;
 
-    @OneToMany(() => Gwiazdy, (gwiazdy) => gwiazdy.ID_Galaktyki)
-    @JoinTable()
-    gwiazdy: Gwiazdy[]
+  @OneToMany(() => Gwiazdy, (gwiazdy) => gwiazdy.galaktyka)
+  @JoinColumn() // bez tego też powinno działać
+  gwiazdy: Gwiazdy[];
 }

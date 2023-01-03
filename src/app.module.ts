@@ -13,23 +13,61 @@ import { Planety } from './Entity/Planety.entity';
 import { Rosliny } from './Entity/Rosliny.entity';
 import { Statki_Gwiezdne } from './Entity/Statki_Gwiezdne.entity';
 import { Zwierzeta } from './Entity/Zwierzeta.entity';
+import { ErrorModule } from './Module/error.module';
+import { APP_GUARD } from '@nestjs/core';
+import { RolesGuard } from './guards/roles.guards';
+import { UsersModule } from './Module/users.module';
+import { AuthModule } from './Module/auth.module';
+import { AppController } from './app.controller';
 
 @Module({
-  imports:[
-    TypeOrmModule.forRoot({
-      type: 'mssql',
+  imports: [
+     /*
+           type: 'mssql',
       host: 'localhost',
       port: 1433,
       username: 'Admin',
       password: 'Admin',
       database: "No Man's Sky",
-      entities: [Galaktyki, Gwiazdy, Krysztaly_i_mineraly, Ksiezyce, Materialy, Materialy_Krysztaly_i_mineraly, Materialy_Rosliny, Materialy_Zwierzeta, Planety, Rosliny, Statki_Gwiezdne, Zwierzeta],
+      */
+
+    TypeOrmModule.forRoot({
+      type: 'mysql',
+      host: 'localhost',
+      port: 3306,
+      username: 'root',
+      password: 'Marcin.1',
+      database: 'aaa',
+      entities: [
+        Galaktyki,
+        Gwiazdy,
+        Krysztaly_i_mineraly,
+        Ksiezyce,
+        Materialy,
+        Materialy_Krysztaly_i_mineraly,
+        Materialy_Rosliny,
+        Materialy_Zwierzeta,
+        Planety,
+        Rosliny,
+        Statki_Gwiezdne,
+        Zwierzeta,
+      ],
       synchronize: false,
       extra: {
         trustServerCertificate: true,
-      }
+      },
     }),
-    GalaktykiModule
-  ] ,
+    GalaktykiModule,
+    ErrorModule,
+    UsersModule,
+    AuthModule,
+  ],
+  controllers: [AppController],
+  providers: [
+    {
+      provide: APP_GUARD,
+      useClass: RolesGuard,
+    },
+  ],
 })
 export class AppModule {}
