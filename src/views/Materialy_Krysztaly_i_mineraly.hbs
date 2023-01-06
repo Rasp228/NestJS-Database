@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <title>Materialy_Krysztaly_i_mineraly</title>
+  </head>
+  <body>
+    <table class="table">
+        <tr>
+            <th>ID_materialy_krysztaly_i_mineraly</th>
+            <th>ID_Materialy</th>
+            <th>ID_Krysztaly_i_mineraly</th>
+            
+            
+        </tr>
+            {{#each Materialy}}
+                <tr>  
+                    <td>{{this.ID_materialy_krysztaly_i_mineralyID}}</td>
+                    <td>{{this.ID_Materialy}}</td>
+                    <td>{{this.ID_Krysztaly_i_mineraly}}<td>
+                    
+                    <td><a href="edit/{{this.ID}}">Edytuj</a> <a href="delete/{{this.ID}}">Usuń</a></td>
+                </tr>
+            {{/each}} 
+    </table>
+    <a href="add/">Dodaj</a>
+  </body>
+</html>

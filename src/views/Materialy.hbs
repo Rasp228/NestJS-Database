@@ -2,19 +2,25 @@
 <html>
   <head>
     <meta charset="utf-8" />
-    <title>Galaktyki</title>
+    <title>Materialy</title>
   </head>
   <body>
     <table class="table">
         <tr>
             <th>ID</th>
             <th>Nazwa</th>
-            <th>Akcje</th>
+            <th>Wartosc</th>
+            <th>Rzadkosc</th>
+            <th>Grupa</th>
+            
         </tr>
-            {{#each galaktyki}}
+            {{#each Materialy}}
                 <tr>  
                     <td>{{this.ID}}</td>
-                    <td>{{this.Nazwa}}</td>
+                    <td>{{this.NAzwa}}</td>
+                    <td>{{this.Wartosc}}<td>
+                    <td>{{this.Rzadkosc}}</td>
+                    <td>{{this.Grupa}}</td>
                     <td><a href="edit/{{this.ID}}">Edytuj</a> <a href="delete/{{this.ID}}">Usuń</a></td>
                 </tr>
             {{/each}} 

@@ -11,3 +11,4 @@ export class Materialy_Krysztaly_i_mineraly {
     @Column()
     ID_Krysztaly_i_mineraly: number
 }
+

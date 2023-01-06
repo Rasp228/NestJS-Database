@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <title>Zwierzeta</title>
+  </head>
+  <body>
+    <table class="table">
+        <tr>
+            <th>ID</th>
+            <th>ID_Planety</th>
+            <th>Nazwa</th>
+            <th>Ekosystem</th>
+            <th>Dieta</th>
+            <th>Temperament</th>
+            <th>Wiek</th>
+            <th>Plec</th>
+            <th>Wielkosc</th>
+            
+        </tr>
+            {{#each zwierzeta}}
+                <tr>  
+                    <td>{{this.ID}}</td>
+                    <td>{{this.ID_Planety}}</td>
+                    <td>{{this.Nazwa}}</td>
+                    <td>{{this.Ekosystem}}</td>
+                    <td>{{this.Dieta}}</td>
+                    <td>{{this.Temperament}}</td>
+                    <td>{{this.Wiek}}</td>
+                    <td>{{this.Plec}}</td>
+                    <td>{{this.Wielkosc}}</td>
+                    <td><a href="edit/{{this.ID}}">Edytuj</a> <a href="delete/{{this.ID}}">Usuń</a></td>
+                </tr>
+            {{/each}} 
+    </table>
+    <a href="add/">Dodaj</a>
+  </body>
+</html>

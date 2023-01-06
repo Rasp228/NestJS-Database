@@ -2,18 +2,20 @@
 <html>
   <head>
     <meta charset="utf-8" />
-    <title>Galaktyki</title>
+    <title>Gwiazdy</title>
   </head>
   <body>
     <table class="table">
         <tr>
             <th>ID</th>
+            <th>Galaktyka</th>
             <th>Nazwa</th>
             <th>Akcje</th>
         </tr>
-            {{#each galaktyki}}
+            {{#each gwiazdy}}
                 <tr>  
                     <td>{{this.ID}}</td>
+                    <td>{{this.ID_Galaktyki}}</td>
                     <td>{{this.Nazwa}}</td>
                     <td><a href="edit/{{this.ID}}">Edytuj</a> <a href="delete/{{this.ID}}">Usuń</a></td>
                 </tr>

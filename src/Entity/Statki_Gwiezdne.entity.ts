@@ -18,5 +18,5 @@ export class Statki_Gwiezdne {
     Ilosc_slotow_technologii: number
 
     @Column()
-    Zasieg_hipernapedu: string
+    Zasieg_hipernapendu: string
 }

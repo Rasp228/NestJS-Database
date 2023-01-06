@@ -1,4 +1,6 @@
-import { Entity, PrimaryGeneratedColumn, Column} from "typeorm"
+import { Entity, PrimaryGeneratedColumn, Column, ManyToOne, JoinColumn} from "typeorm"
+import { Ksiezyce } from "./Ksiezyce.entity"
+import { Planety } from "./Planety.entity"
 
 @Entity()
 export class Rosliny {
@@ -28,4 +30,12 @@ export class Rosliny {
 
     @Column()
     Notatka: string
+
+    @ManyToOne(() => Planety, (planety: Planety) => planety.rosliny)
+    @JoinColumn({name: 'ID_Planety'})
+    roslina: Planety
+
+    @ManyToOne(() => Ksiezyce, (ksiezyce: Ksiezyce) => ksiezyce.rosliny)
+    @JoinColumn({name: 'ID_Ksiezyca'})
+    roslina_ks: Ksiezyce
 }

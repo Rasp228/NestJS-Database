@@ -1,5 +1,6 @@
-import {Entity, PrimaryGeneratedColumn, Column, ManyToOne, JoinTable, JoinColumn} from "typeorm"
+import {Entity, PrimaryGeneratedColumn, Column, ManyToOne, OneToMany, JoinTable, JoinColumn} from "typeorm"
 import { Galaktyki } from "./Galaktyki.entity"
+import { Planety } from "./Planety.entity"
 
 @Entity()
 export class Gwiazdy {
@@ -13,6 +14,10 @@ export class Gwiazdy {
     ID_Galaktyki: number
 
     @ManyToOne(() => Galaktyki, (galaktyka: Galaktyki) => galaktyka.gwiazdy)
-    @JoinColumn({name: 'ID_galaktyki'})
+    @JoinColumn({name: 'ID_Galaktyki'})
     galaktyka: Galaktyki
+
+    @OneToMany(() => Planety, (planety) => planety.gwiazda)
+    @JoinColumn()
+    planety: Planety[];
 }

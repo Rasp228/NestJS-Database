@@ -9,8 +9,8 @@ import {UserRole} from '../Service/users.service';
 export class GalaktykiController {
   constructor(private readonly GalaktykiService: GalaktykiService) {}
 
-  @Roles([UserRole.Admin, UserRole.User])
-  @UseGuards(RolesGuard)
+  //@Roles([UserRole.Admin, UserRole.User])
+  //@UseGuards(RolesGuard)
   @Get('lista')
   @Render('Galaktyki.hbs')
   async lista() {
@@ -22,8 +22,8 @@ export class GalaktykiController {
     }
   }
 
-  @Roles([UserRole.Admin])
-  @UseGuards(RolesGuard)
+  //@Roles([UserRole.Admin])
+  //@UseGuards(RolesGuard)
   @Get('delete/:id')
   async delete(@Res() res, @Param() params) {
     const galktyka = await this.GalaktykiService.findOneWithStars(params.id);
