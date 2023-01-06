@@ -12,13 +12,13 @@
             <th>Akcje</th>
         </tr>
             {{#each galaktyki}}
-                <tr>  
+                <tr>
                     <td>{{this.ID}}</td>
                     <td>{{this.Nazwa}}</td>
                     <td><a href="edit/{{this.ID}}">Edytuj</a> <a href="delete/{{this.ID}}">Usuń</a></td>
                 </tr>
-            {{/each}} 
+            {{/each}}
     </table>
-    <a href="add/">Dodaj</a>
+    <a href="add/{{this.ID}}">Dodaj</a>
   </body>
 </html>

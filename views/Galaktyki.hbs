@@ -1,0 +1,30 @@
+<div class="container">
+    <a href="add/{{this.ID}}">Dodaj</a>
+    <table class="table">
+        <tr>
+            <th>ID</th>
+            <th>Nazwa</th>
+            <th>Akcje</th>
+        </tr>
+            {{#each galaktyki}}
+                <tr>
+                    <td>{{this.ID}}</td>
+                    <td>{{this.Nazwa}}</td>
+
+                    <td>
+                        <a class="btn btn-sm btn-primary" href="edit/{{this.ID}}">
+                            Edytuj
+                        </a>
+                        {{ user.isAdmin }}
+                        {{#if ../user.isAdmin}}
+                            <a class="btn btn-danger btn-sm" href="delete/{{this.ID}}">Usuń</a>
+                        {{/if}}
+                        </td>
+                </tr>
+            {{/each}}
+    </table>
+</div>
+
+
+
+

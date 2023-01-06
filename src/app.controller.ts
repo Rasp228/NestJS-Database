@@ -1,17 +1,9 @@
-import {Controller, Post, UseGuards, Request, Get, Render} from '@nestjs/common';
-import { AuthGuard } from '@nestjs/passport';
+import { Controller, Get, Render, Res } from '@nestjs/common';
 
 @Controller()
 export class AppController {
-  @UseGuards(AuthGuard('local'))
-  @Post('auth/login')
-  async login(@Request() req) {
-    return req.user;
-  }
-
-  @Get('login-form')
-  @Render('Formularz_logowania.hbs')
-  loginForm() {
-    return;
+  @Get('page-not-found')
+  notFound(@Res() res) {
+    return res.render('404', { layout: 'main_without_login' });
   }
 }
