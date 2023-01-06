@@ -1,4 +1,6 @@
-import { Entity, PrimaryGeneratedColumn, Column} from "typeorm"
+import { Entity, PrimaryGeneratedColumn, Column, ManyToOne, JoinColumn } from "typeorm"
+import { Materialy } from "./Materialy.entity"
+import { Zwierzeta } from "./Zwierzeta.entity"
 
 @Entity()
 export class Materialy_Zwierzeta {
@@ -10,4 +12,12 @@ export class Materialy_Zwierzeta {
 
     @Column()
     ID_Zwierzeta: number
+
+    @ManyToOne(() => Zwierzeta, (zwierze: Zwierzeta) => zwierze.materialy_zwierzeta)
+    @JoinColumn({name: 'ID_Zwierzeta'})
+    zwierze: Zwierzeta
+
+    @ManyToOne(() => Materialy, (material: Materialy) => material.materialy_zwierzeta)
+    @JoinColumn({name: 'ID_Materialy'})
+    material: Materialy
 }

@@ -17,7 +17,7 @@ export class KsiezyceService {
   async findOneWithKsiezyce(ID: number): Promise<Ksiezyce> {
     const collection = await this.KsiezyceRepository.find({
       where: { ID },
-      //relations: { : true },
+      relations: { krysztaly_i_mineraly : true, rosliny : true },
     });
     return collection.pop();
   }

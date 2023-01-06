@@ -1,5 +1,6 @@
-import { Entity, PrimaryGeneratedColumn, Column, ManyToOne, JoinColumn} from "typeorm"
+import { Entity, PrimaryGeneratedColumn, Column, ManyToOne, JoinColumn, OneToMany } from "typeorm"
 import { Ksiezyce } from "./Ksiezyce.entity"
+import { Materialy_Rosliny } from "./Materialy-Rosliny.entity"
 import { Planety } from "./Planety.entity"
 
 @Entity()
@@ -31,11 +32,15 @@ export class Rosliny {
     @Column()
     Notatka: string
 
-    @ManyToOne(() => Planety, (planety: Planety) => planety.rosliny)
-    @JoinColumn({name: 'ID_Planety'})
-    roslina: Planety
-
-    @ManyToOne(() => Ksiezyce, (ksiezyce: Ksiezyce) => ksiezyce.rosliny)
+    @ManyToOne(() => Ksiezyce, (ksiezyc: Ksiezyce) => ksiezyc.rosliny)
     @JoinColumn({name: 'ID_Ksiezyca'})
-    roslina_ks: Ksiezyce
+    ksiezyc: Ksiezyce
+
+    @ManyToOne(() => Planety, (planeta: Planety) => planeta.rosliny)
+    @JoinColumn({name: 'ID_Planety'})
+    planeta: Planety
+
+    @OneToMany(() => Materialy_Rosliny, (materialy_rosliny) => materialy_rosliny.roslina)
+    @JoinColumn()
+    materialy_rosliny: Materialy_Rosliny[];
 }

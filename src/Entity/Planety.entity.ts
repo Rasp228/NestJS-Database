@@ -38,19 +38,19 @@ export class Planety {
     @JoinColumn({name: 'ID_Gwiazdy'})
     gwiazda: Gwiazdy
 
-    @OneToMany(() => Ksiezyce, (ksiezyce) => ksiezyce.ksiezyc)
+    @OneToMany(() => Ksiezyce, (ksiezyce) => ksiezyce.planeta)
     @JoinColumn()
     ksiezyce: Ksiezyce[];
 
-    @OneToMany(() => Rosliny, (rosliny) => rosliny.roslina_ks)
+    @OneToMany(() => Zwierzeta, (zwierzeta) => zwierzeta.planeta)
+    @JoinColumn()
+    zwierzeta: Zwierzeta[];
+
+    @OneToMany(() => Krysztaly_i_mineraly, (krysztaly_i_mineraly) => krysztaly_i_mineraly.planeta)
+    @JoinColumn()
+    krysztaly_i_mineraly: Krysztaly_i_mineraly[];
+
+    @OneToMany(() => Rosliny, (rosliny) => rosliny.planeta)
     @JoinColumn()
     rosliny: Rosliny[];
-
-    @OneToMany(() => Krysztaly_i_mineraly, (Krysztaly_i_mineraly) => Krysztaly_i_mineraly.Krysztal_i_mineral)
-    @JoinColumn()
-    Krysztaly_i_mineraly: Krysztaly_i_mineraly[];
-
-    @OneToMany(() => Zwierzeta, (zwierzeta) => zwierzeta.Zwierze)
-    @JoinColumn()
-    Zwierzeta: Zwierzeta[];
 }

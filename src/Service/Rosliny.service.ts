@@ -17,7 +17,7 @@ export class RoslinyService {
   async findOneWithRosliny(ID: number): Promise<Rosliny> {
     const collection = await this.RoslinyRepository.find({
       where: { ID },
-      //relations: { planety: true },
+      relations: { materialy_rosliny: true },
     });
     return collection.pop();
   }

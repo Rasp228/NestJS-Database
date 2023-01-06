@@ -17,7 +17,6 @@ export class Materialy_RoslinyService {
   async findOneWithMaterialy_Rosliny(ID_materialy_rosliny: number): Promise<Materialy_Rosliny> {
     const collection = await this.Materialy_RoslinyRepository.find({
       where: { ID_materialy_rosliny },
-      //relations: { ksiezyce: true },
     });
     return collection.pop();
   }

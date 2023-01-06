@@ -17,7 +17,7 @@ export class ZwierzetaService {
   async findOneWithZwierzeta(ID: number): Promise<Zwierzeta> {
     const collection = await this.ZwierzetaRepository.find({
       where: { ID },
-      //relations: { ksiezyce: true },
+      relations: { materialy_zwierzeta: true },
     });
     return collection.pop();
   }

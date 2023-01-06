@@ -1,5 +1,6 @@
-import { Entity, PrimaryGeneratedColumn, Column, ManyToOne, JoinColumn} from "typeorm"
+import { Entity, PrimaryGeneratedColumn, Column, ManyToOne, JoinColumn, OneToMany } from "typeorm"
 import { Ksiezyce } from "./Ksiezyce.entity"
+import { Materialy_Krysztaly_i_mineraly } from "./Materialy_Krysztaly_i_mineraly.entity"
 import { Planety } from "./Planety.entity"
 
 @Entity()
@@ -16,11 +17,15 @@ export class Krysztaly_i_mineraly {
     @Column()
     ID_Ksiezyca: number
 
-    @ManyToOne(() => Planety, (planeta: Planety) => planeta.Krysztaly_i_mineraly)
+    @ManyToOne(() => Planety, (planeta: Planety) => planeta.krysztaly_i_mineraly)
     @JoinColumn({name: 'ID_Planety'})
-    Krysztal_i_mineral: Planety
+    planeta: Planety
 
-    @ManyToOne(() => Ksiezyce, (ksiezyc: Ksiezyce) => ksiezyc.Krysztaly_i_mineraly)
+    @ManyToOne(() => Ksiezyce, (ksiezyc: Ksiezyce) => ksiezyc.krysztaly_i_mineraly)
     @JoinColumn({name: 'ID_Ksiezyca'})
-    Krysztal_i_mineral_ks: Ksiezyce
+    ksiezyc: Ksiezyce
+
+    @OneToMany(() => Materialy_Krysztaly_i_mineraly, (materialy_krysztaly_i_mineraly) => materialy_krysztaly_i_mineraly.krysztal_i_mineral)
+    @JoinColumn()
+    materialy_krysztaly_i_mineraly: Materialy_Krysztaly_i_mineraly[];
 }

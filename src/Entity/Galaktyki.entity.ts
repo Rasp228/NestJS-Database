@@ -3,7 +3,6 @@ import {
   PrimaryGeneratedColumn,
   Column,
   OneToMany,
-  JoinTable,
   JoinColumn,
 } from 'typeorm';
 import { Gwiazdy } from './Gwiazdy.entity';

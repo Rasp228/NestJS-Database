@@ -2,6 +2,7 @@ import { Entity, PrimaryGeneratedColumn, Column, ManyToOne, JoinColumn, OneToMan
 import { Krysztaly_i_mineraly } from "./Krysztaly_i_mineraly.entity"
 import { Planety } from "./Planety.entity"
 import { Rosliny } from "./Rosliny.entity"
+import { Zwierzeta } from "./Zwierzeta.entity"
 
 @Entity()
 export class Ksiezyce {
@@ -17,15 +18,15 @@ export class Ksiezyce {
     @Column()
     ID_Planety: number
 
-    @ManyToOne(() => Planety, (planety: Planety) => planety.ksiezyce)
+    @ManyToOne(() => Planety, (planeta: Planety) => planeta.ksiezyce)
     @JoinColumn({name: 'ID_Planety'})
-    ksiezyc: Planety
+    planeta: Planety
 
-    @OneToMany(() => Rosliny, (rosliny) => rosliny.roslina)
+    @OneToMany(() => Krysztaly_i_mineraly, (krysztaly_i_mineraly) => krysztaly_i_mineraly.ksiezyc)
+    @JoinColumn()
+    krysztaly_i_mineraly: Krysztaly_i_mineraly[];
+
+    @OneToMany(() => Rosliny, (rosliny) => rosliny.ksiezyc)
     @JoinColumn()
     rosliny: Rosliny[];
-
-    @OneToMany(() => Krysztaly_i_mineraly, (Krysztaly_i_mineraly) => Krysztaly_i_mineraly.Krysztal_i_mineral_ks)
-    @JoinColumn()
-    Krysztaly_i_mineraly: Krysztaly_i_mineraly[];
 }

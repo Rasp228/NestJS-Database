@@ -17,7 +17,6 @@ export class Materialy_Krysztaly_i_mineralyService {
   async findOneWithMaterialy_Krysztaly_i_mineraly(ID_materialy_krysztaly_i_mineraly: number): Promise<Materialy_Krysztaly_i_mineraly> {
     const collection = await this.Materialy_Krysztaly_i_mineralyRepository.find({
          where: { ID_materialy_krysztaly_i_mineraly },
-      //relations: { ksiezyce: true },
     });
     return collection.pop();
   }

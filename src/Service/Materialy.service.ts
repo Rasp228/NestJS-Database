@@ -17,7 +17,7 @@ export class MaterialyService {
   async findOneWithMaterialy(ID: number): Promise<Materialy> {
     const collection = await this.MaterialyRepository.find({
       where: { ID },
-      //relations: { ksiezyce: true },
+      relations: { materialy_krysztaly_i_mineraly: true, materialy_rosliny: true, materialy_zwierzeta: true },
     });
     return collection.pop();
   }

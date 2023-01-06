@@ -1,4 +1,5 @@
-import { Entity, PrimaryGeneratedColumn, Column, ManyToOne, JoinColumn} from "typeorm"
+import { Entity, PrimaryGeneratedColumn, Column, ManyToOne, JoinColumn, OneToMany} from "typeorm"
+import { Materialy_Zwierzeta } from "./Materialy-Zwierzeta.entity"
 import { Planety } from "./Planety.entity"
 
 @Entity()
@@ -30,7 +31,11 @@ export class Zwierzeta {
     @Column()
     Wielkosc: string
 
-    @ManyToOne(() => Planety, (planety: Planety) => planety.Zwierzeta)
+    @ManyToOne(() => Planety, (planeta: Planety) => planeta.zwierzeta)
     @JoinColumn({name: 'ID_Planety'})
-    Zwierze: Planety
+    planeta: Planety
+
+    @OneToMany(() => Materialy_Zwierzeta, (materialy_zwierzeta) => materialy_zwierzeta.zwierze)
+    @JoinColumn()
+    materialy_zwierzeta: Materialy_Zwierzeta[];
 }

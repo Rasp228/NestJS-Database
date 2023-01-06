@@ -17,7 +17,6 @@ export class Materialy_ZwierzetaService {
   async findOneWithMaterialy_Zwierzeta(ID_materialy_zwierzeta: number): Promise<Materialy_Zwierzeta> {
     const collection = await this.Materialy_ZwierzetaRepository.find({
       where: { ID_materialy_zwierzeta },
-      //relations: { ksiezyce: true },
     });
     return collection.pop();
   }

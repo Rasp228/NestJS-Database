@@ -17,7 +17,6 @@ export class Statki_GwiezdneService {
   async findOneWithStatki_Gwiezdne(ID: number): Promise<Statki_Gwiezdne> {
     const collection = await this.Statki_GwiezdneRepository.find({
       where: { ID },
-     // relations: { ksiezyce: true },
     });
     return collection.pop();
   }

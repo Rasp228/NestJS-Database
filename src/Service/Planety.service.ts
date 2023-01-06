@@ -17,7 +17,7 @@ export class PlanetyService {
   async findOneWithPlanets(ID: number): Promise<Planety> {
     const collection = await this.PlanetyRepository.find({
       where: { ID },
-      relations: { ksiezyce: true },
+      relations: { ksiezyce: true, zwierzeta: true, rosliny: true, krysztaly_i_mineraly: true },
     });
     return collection.pop();
   }

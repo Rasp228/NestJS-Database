@@ -1,4 +1,4 @@
-import {Entity, PrimaryGeneratedColumn, Column, ManyToOne, OneToMany, JoinTable, JoinColumn} from "typeorm"
+import {Entity, PrimaryGeneratedColumn, Column, ManyToOne, OneToMany, JoinColumn} from "typeorm"
 import { Galaktyki } from "./Galaktyki.entity"
 import { Planety } from "./Planety.entity"
 
