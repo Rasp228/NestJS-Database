@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <title>Planety</title>
+  </head>
+  <body>
+    <table class="table">
+        <tr>
+            <th>ID</th>
+            <th>Gwiazda</th>
+            <th>Nazwa</th>
+            <th>Typ</th>
+            <th>Rzadkosc</th>
+            <th>Teren</th>
+            <th>Flora</th>
+            <th>Fauna</th>
+            <th>Straznicy</th>
+            <th>Akcje</th>
+        </tr>
+            {{#each planety}}
+                <tr>  
+                    <td>{{this.ID}}</td>
+                    <td>{{this.ID_Gwiazdy}}</td>
+                    <td>{{this.Nazwa}}</td>
+                    <td>{{this.Typ}}</td>
+                    <td>{{this.Rzadkosc}}</td>
+                    <td>{{this.Teren}}</td>
+                    <td>{{this.Flora}}</td>
+                    <td>{{this.Fauna}}</td>
+                    <td>{{this.Straznicy}}</td>
+                    <td><a href="edit/{{this.ID}}">Edytuj</a> <a href="delete/{{this.ID}}">Usuń</a></td>
+                </tr>
+            {{/each}} 
+    </table>
+    <a href="add/">Dodaj</a>
+  </body>
+</html>

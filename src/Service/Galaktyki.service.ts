@@ -29,4 +29,8 @@ export class GalaktykiService {
   async remove(id: string): Promise<void> {
     await this.GalaktykiRepository.delete(id);
   }
+
+  async save(Galaktyka: Galaktyki): Promise<Galaktyki> {
+    return await this.GalaktykiRepository.save(Galaktyka);
+  }
 }
