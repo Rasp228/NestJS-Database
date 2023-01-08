@@ -31,6 +31,11 @@ export class GalaktykiService {
   }
 
   async save(Galaktyka: Galaktyki): Promise<Galaktyki> {
+    console.log(Galaktyka);
     return await this.GalaktykiRepository.save(Galaktyka);
+  }
+
+  async update(Galaktyka: Galaktyki): Promise<void>{
+    await this.GalaktykiRepository.update({ID:Galaktyka.ID}, {Nazwa:Galaktyka.Nazwa})
   }
 }

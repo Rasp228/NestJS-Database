@@ -13,7 +13,7 @@ export class HttpExceptionFilter implements ExceptionFilter {
   catch(exception: HttpException, host: ArgumentsHost) {
     const ctx = host.switchToHttp();
     const response = ctx.getResponse<Response>();
-
+    console.log(exception.message);
     switch (exception.getStatus()) {
       case 401:
       case 403:

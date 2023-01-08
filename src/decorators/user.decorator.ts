@@ -5,7 +5,7 @@ export const User = createParamDecorator(
   (data: unknown, ctx: ExecutionContext) => {
     const request = ctx.switchToHttp().getRequest();
     const user = request.user;
-    user.isAdmin = user.rola === UserRole.Admin;
+    user.isAdmin = user.Role === UserRole.Admin;
     return user;
   },
 );

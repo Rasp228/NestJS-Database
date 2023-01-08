@@ -30,6 +30,7 @@ import { MaterialyModule } from './Module/Materialy.module';
 import { RoslinyModule } from './Module/Rosliny.module';
 import { Statki_GwiezdneModule } from './Module/Statki_Gwiezdne.module';
 import { ZwierzetaModule } from './Module/Zwierzeta.module';
+import { UzytkownicyEntity } from './Entity/Uzytkownicy.entity';
 
 @Module({
   imports: [
@@ -53,6 +54,7 @@ import { ZwierzetaModule } from './Module/Zwierzeta.module';
         Rosliny,
         Statki_Gwiezdne,
         Zwierzeta,
+        UzytkownicyEntity
       ],
       synchronize: false,
       extra: {

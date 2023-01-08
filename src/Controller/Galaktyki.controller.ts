@@ -47,7 +47,7 @@ export class GalaktykiController {
   }
   @Roles([UserRole.Admin])
   @UseGuards(RolesGuard)
-  @Get('galaktyka-formularz')
+  @Get('galaktyka-formularz/:id')
   async addUpdateForm(@Res() res, @Param() params) {
     let galaktyka = await this.GalaktykiService.findOneWithStars(params.id);
 
@@ -82,7 +82,7 @@ export class GalaktykiController {
     }
     galaktyka.Nazwa = nazwa;
     galaktyka.ID = ID;
-    this.GalaktykiService.save(galaktyka);
+    this.GalaktykiService.update(galaktyka);
     return res.status(200).redirect('/Galaktyki/lista');
   }
 }
