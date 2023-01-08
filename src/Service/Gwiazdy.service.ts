@@ -31,11 +31,10 @@ export class GwiazdyService {
   }
 
   async save(Gwiazda: Gwiazdy): Promise<Gwiazdy> {
-    console.log(Gwiazda);
     return await this.GwiazdyRepository.save(Gwiazda);
   }
 
   async update(Gwiazda: Gwiazdy): Promise<void>{
-    await this.GwiazdyRepository.update({ID:Gwiazda.ID}, {Nazwa:Gwiazda.Nazwa})
+    await this.GwiazdyRepository.update({ID:Gwiazda.ID}, {Nazwa:Gwiazda.Nazwa, ID_Galaktyki:Gwiazda.ID_Galaktyki})
   }
 }

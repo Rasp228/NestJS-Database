@@ -14,7 +14,7 @@ export class PlanetyService {
     return this.PlanetyRepository.find();
   }
 
-  async findOneWithPlanets(ID: number): Promise<Planety> {
+  async findOneWithksiezyce(ID: number): Promise<Planety> {
     const collection = await this.PlanetyRepository.find({
       where: { ID },
       relations: { ksiezyce: true, zwierzeta: true, rosliny: true, krysztaly_i_mineraly: true },
@@ -28,5 +28,13 @@ export class PlanetyService {
 
   async remove(id: string): Promise<void> {
     await this.PlanetyRepository.delete(id);
+  }
+
+  async save(Planeta: Planety): Promise<Planety> {
+    return await this.PlanetyRepository.save(Planeta);
+  }
+
+  async update(Planeta: Planety): Promise<void>{
+   // await this.PlanetyRepository.update({ID:Planeta.ID}, {Nazwa:Planeta.Nazwa}, {Typ:Planeta.Typ}, {Nazwa:Planeta.Nazwa}, {Nazwa:Planeta.Nazwa}, {Nazwa:Planeta.Nazwa}, {Nazwa:Planeta.Nazwa}, {Nazwa:Planeta.Nazwa})
   }
 }

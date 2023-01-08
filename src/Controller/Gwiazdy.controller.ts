@@ -16,10 +16,6 @@ export class GwiazdyController {
   @Get('lista')
   async lista(@User() user, @Res() res) {
       const gwiazdy = await this.GwiazdyService.findAll();
-      gwiazdy.forEach((gwiazdy) => {
-        console.log(gwiazdy.galaktyka);
-      });
-
       return res.render('Gwiazdy', { gwiazdy, user });
   }
 
@@ -40,24 +36,25 @@ export class GwiazdyController {
   }
   @Roles([UserRole.Admin])
   @UseGuards(RolesGuard)
-  @Get('gwiazda-formularz/:id')
+  @Get('gwiazdy_formularz/:id')
   async addUpdateForm(@Res() res, @Param() params) {
     let gwiazda = await this.GwiazdyService.findOneWithPlanets(params.id);
 
     if (!gwiazda) {
       gwiazda = new Gwiazdy();
     }
-    return res.render('gwiazda_formularz', { gwiazda });
+    return res.render('gwiazdy_formularz', { gwiazda });
   }
 
   @Roles([UserRole.Admin])
   @UseGuards(RolesGuard)
   @Post('add')
-  async add(@Res() res, @Body('nazwa') nazwa: string) {
+  async add(@Res() res, @Body('nazwa') nazwa: string, @Body('ID_Galaktyki') ID_Galaktyki: number) {
     const gwiazda = new Gwiazdy();
     gwiazda.Nazwa = nazwa;
+    gwiazda.ID_Galaktyki = ID_Galaktyki;
     this.GwiazdyService.save(gwiazda);
-    return res.status(200).redirect('/Galaktyki/lista');
+    return res.status(200).redirect('/Gwiazdy/lista');
   }
 
   @Roles([UserRole.Admin])
@@ -65,6 +62,7 @@ export class GwiazdyController {
   @Post('update')
   async update(
     @Res() res,
+    @Body('ID_Galaktyki') ID_Galaktyki: number,
     @Body('nazwa') nazwa: string,
     @Body('ID') ID: number,
   ) {
@@ -74,8 +72,9 @@ export class GwiazdyController {
       throw new HttpException('Resource not found!', 404);
     }
     gwiazda.Nazwa = nazwa;
+    gwiazda.ID_Galaktyki = ID_Galaktyki;
     gwiazda.ID = ID;
     this.GwiazdyService.update(gwiazda);
-    return res.status(200).redirect('/Galaktyki/lista');
+    return res.status(200).redirect('/Gwiazdy/lista');
   }
 }

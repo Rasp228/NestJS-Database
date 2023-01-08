@@ -1,23 +1,15 @@
-<!DOCTYPE html>
-<html>
-  <head>
-    <meta charset="utf-8" />
-    <title>Materialy-Zwierzeta</title>
-  </head>
-  <body>
+<div class="container">
     <table class="table">
         <tr>
             <th>ID_materialy_zwierzeta</th>
             <th>ID_Materialy</th>
             <th>ID_Zwierzeta</th>
-            
-            
         </tr>
             {{#each materialy_zwierzeta}}
                 <tr>  
                     <td>{{this.ID_materialy_zwierzeta}}</td>
                     <td>{{this.ID_Materialy}}</td>
-                    <td>{{this.ID_Zwierzeta}}<td>
+                    <td>{{this.ID_Zwierzeta}}</td>
                     
                     {{ user.isAdmin }}
                     {{#if ../user.isAdmin}}
@@ -27,5 +19,4 @@
             {{/each}} 
     </table>
     <a href="add/">Dodaj</a>
-  </body>
-</html>
+</div>

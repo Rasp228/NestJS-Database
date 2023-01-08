@@ -1,10 +1,4 @@
-<!DOCTYPE html>
-<html>
-  <head>
-    <meta charset="utf-8" />
-    <title>Materialy</title>
-  </head>
-  <body>
+<div class="container">
     <table class="table">
         <tr>
             <th>ID_materialy_rosliny</th>
@@ -16,8 +10,7 @@
                 <tr>  
                     <td>{{this.ID_materialy_rosliny}}</td>
                     <td>{{this.ID_Materialy}}</td>
-                    <td>{{this.ID_Rosliny}}<td>
-
+                    <td>{{this.ID_Rosliny}}</td>
                     {{ user.isAdmin }}
                     {{#if ../user.isAdmin}}
                     <td><a href="edit/{{this.ID}}">Edytuj</a> <a href="delete/{{this.ID}}">Usuń</a></td>
@@ -25,5 +18,4 @@
             {{/each}} 
     </table>
     <a href="add/">Dodaj</a>
-  </body>
-</html>
+</div>

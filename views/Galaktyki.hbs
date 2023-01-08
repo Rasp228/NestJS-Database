@@ -12,15 +12,13 @@
                 <tr>
                     <td>{{this.ID}}</td>
                     <td>{{this.Nazwa}}</td>
-                    <td>
                         {{ user.isAdmin }}
-                        {{#if ../user.isAdmin}}
-                        <a class="btn btn-sm btn-primary" href="galaktyka-formularz/{{this.ID}}">
-                            Edytuj
-                        </a>
-                            <a class="btn btn-danger btn-sm" href="delete/{{this.ID}}">Usuń</a>
-                        {{/if}}
-                        </td>
+                    {{#if ../user.isAdmin}}
+                    <td>
+                        <a class="btn btn-sm btn-primary" href="galaktyka-formularz/{{this.ID}}">Edytuj</a>
+                        <a class="btn btn-danger btn-sm" href="delete/{{this.ID}}">Usuń</a>
+                    </td>
+                    {{/if}}
                 </tr>
             {{/each}}
     </table>
