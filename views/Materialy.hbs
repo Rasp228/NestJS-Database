@@ -21,7 +21,10 @@
                     <td>{{this.Wartosc}}<td>
                     <td>{{this.Rzadkosc}}</td>
                     <td>{{this.Grupa}}</td>
+                    {{ user.isAdmin }}
+                    {{#if ../user.isAdmin}}
                     <td><a href="edit/{{this.ID}}">Edytuj</a> <a href="delete/{{this.ID}}">Usuń</a></td>
+                    {{/if}}
                 </tr>
             {{/each}} 
     </table>

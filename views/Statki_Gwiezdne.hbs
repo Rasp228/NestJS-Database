@@ -24,7 +24,10 @@
                     <td>{{this.Ilosc_slotow_technologii}}</td>
                     <td>{{this.Zasieg_hipernapendu}}</td>
                    
+                    {{ user.isAdmin }}
+                    {{#if ../user.isAdmin}}
                     <td><a href="edit/{{this.ID}}">Edytuj</a> <a href="delete/{{this.ID}}">Usuń</a></td>
+                    {{/if}}
                 </tr>
             {{/each}} 
     </table>

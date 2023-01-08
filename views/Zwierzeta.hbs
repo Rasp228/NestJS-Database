@@ -29,7 +29,10 @@
                     <td>{{this.Wiek}}</td>
                     <td>{{this.Plec}}</td>
                     <td>{{this.Wielkosc}}</td>
+                    {{ user.isAdmin }}
+                    {{#if ../user.isAdmin}}
                     <td><a href="edit/{{this.ID}}">Edytuj</a> <a href="delete/{{this.ID}}">Usuń</a></td>
+                    {{/if}}
                 </tr>
             {{/each}} 
     </table>

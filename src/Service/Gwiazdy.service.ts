@@ -29,4 +29,13 @@ export class GwiazdyService {
   async remove(id: string): Promise<void> {
     await this.GwiazdyRepository.delete(id);
   }
+
+  async save(Gwiazda: Gwiazdy): Promise<Gwiazdy> {
+    console.log(Gwiazda);
+    return await this.GwiazdyRepository.save(Gwiazda);
+  }
+
+  async update(Gwiazda: Gwiazdy): Promise<void>{
+    await this.GwiazdyRepository.update({ID:Gwiazda.ID}, {Nazwa:Gwiazda.Nazwa})
+  }
 }

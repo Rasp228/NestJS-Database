@@ -36,7 +36,7 @@ export class GalaktykiController {
     if (!galaktyka) {
       throw new HttpException('Resource not found!', 404);
     }
-
+    
     if (galaktyka.gwiazdy.length) {
       res.status(200).redirect('/error/1');
       return;

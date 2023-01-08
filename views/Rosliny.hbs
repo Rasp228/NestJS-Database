@@ -29,7 +29,10 @@
                     <td>{{this.Korzenie}}</td>
                     <td>{{this.Typ}}</td>
                     <td>{{this.Notatka}}</td>
+                    {{ user.isAdmin }}
+                    {{#if ../user.isAdmin}}
                     <td><a href="edit/{{this.ID}}">Edytuj</a> <a href="delete/{{this.ID}}">Usuń</a></td>
+                    {{/if}}
                 </tr>
             {{/each}} 
     </table>

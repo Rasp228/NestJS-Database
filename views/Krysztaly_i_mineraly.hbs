@@ -19,7 +19,10 @@
                     <td>{{this.ID_Planety}}</td>
                     <td>{{this.ID_Ksiezyca}}<td>
                     <td>{{this.Nazwa}}</td>
+                    {{ user.isAdmin }}
+                    {{#if ../user.isAdmin}}
                     <td><a href="edit/{{this.ID}}">Edytuj</a> <a href="delete/{{this.ID}}">Usuń</a></td>
+                    {{/if}}
                 </tr>
             {{/each}} 
     </table>
