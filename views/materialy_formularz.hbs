@@ -1,0 +1,12 @@
+<div class="container">
+    <form action="http://localhost:3000/Galaktyki/{{#if galaktyka.ID}}update{{else}}add{{/if}}" method='post'>
+        {{#if galaktyka.ID}}
+            <input type="hidden" name='ID' value='{{galaktyka.ID}}'>
+        {{/if}}
+         <div class="mb-3">
+            <label for="nazwa" class="form-label">Nazwa galaktyki</label>
+            <input type="text" class="form-control" id="nazwa" name="nazwa" value='{{galaktyka.Nazwa}}'>
+          </div>
+          <button type="submit" class="btn btn-primary btn-sm">Zapisz</button>
+    </form>
+</div>

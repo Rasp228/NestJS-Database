@@ -1,0 +1,14 @@
+<div class="container">
+    <form action="http://localhost:3000/Gwiazdy/{{#if gwiazda.ID}}update{{else}}add{{/if}}" method='post'>
+        {{#if gwiazda.ID}}
+            <input type="hidden" name='ID' value='{{gwiazda.ID}}'>
+        {{/if}}
+         <div class="mb-3">
+            <label for="nazwa" class="form-label">Nazwa gwiazdy</label>
+            <input type="text" class="form-control" id="nazwa" name="nazwa" value='{{gwiazda.Nazwa}}'>
+            <label for="nazwa" class="form-label">ID Galaktyki</label>
+            <input type="text" class="form-control" id="ID_Galaktyki" name="ID_Galaktyki" value='{{gwiazda.ID_Galaktyki}}'>
+          </div>
+          <button type="submit" class="btn btn-primary btn-sm">Zapisz</button>
+    </form>
+</div>
