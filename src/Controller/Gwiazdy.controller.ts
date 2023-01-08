@@ -6,17 +6,19 @@ import { Roles } from '../decorators/roles.decorator';
 import { UserRole } from 'src/Service/users.service';
 import { User } from '../decorators/user.decorator';
 import { Gwiazdy } from 'src/Entity/Gwiazdy.entity';
+import { GalaktykiService } from 'src/Service/Galaktyki.service';
 
 @Controller('Gwiazdy')
 export class GwiazdyController {
-  constructor(private readonly GwiazdyService: GwiazdyService) {}
+  constructor(private readonly GwiazdyService: GwiazdyService, readonly GalaktykiService: GalaktykiService ) {}
 
   @Roles([UserRole.User, UserRole.Admin])
   @UseGuards(RolesGuard)
   @Get('lista')
   async lista(@User() user, @Res() res) {
       const gwiazdy = await this.GwiazdyService.findAll();
-      return res.render('Gwiazdy', { gwiazdy, user });
+      const galaktyki = await this.GalaktykiService.findAll();
+      return res.render('Gwiazdy', { gwiazdy, user, galaktyki });
   }
 
   @Roles([UserRole.Admin])
@@ -39,11 +41,11 @@ export class GwiazdyController {
   @Get('gwiazdy_formularz/:id')
   async addUpdateForm(@Res() res, @Param() params) {
     let gwiazda = await this.GwiazdyService.findOneWithPlanets(params.id);
-
+    let galaktyki = await this.GalaktykiService.findAll();
     if (!gwiazda) {
       gwiazda = new Gwiazdy();
     }
-    return res.render('gwiazdy_formularz', { gwiazda });
+    return res.render('gwiazdy_formularz', { gwiazda, galaktyki });
   }
 
   @Roles([UserRole.Admin])
