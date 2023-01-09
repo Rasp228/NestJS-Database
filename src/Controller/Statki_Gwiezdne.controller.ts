@@ -16,7 +16,7 @@ export class Statki_GwiezdneController {
   @Get('lista')
   async lista(@User() user, @Res() res) {
     const statki_gwiezdne = await this.Statki_GwiezdneService.findAll();
-    return res.render('Statki_Gwiezdne', { statki_gwiezdne });
+    return res.render('Statki_Gwiezdne', { user, statki_gwiezdne });
 }
 
 @Roles([UserRole.Admin])

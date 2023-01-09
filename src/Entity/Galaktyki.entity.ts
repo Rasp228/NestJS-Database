@@ -16,6 +16,6 @@ export class Galaktyki {
   Nazwa: string;
 
   @OneToMany(() => Gwiazdy, (gwiazdy) => gwiazdy.galaktyka)
-  @JoinColumn() // bez tego też powinno działać
+  @JoinColumn()
   gwiazdy: Gwiazdy[];
 }

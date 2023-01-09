@@ -1,7 +1,7 @@
 import { Injectable } from '@nestjs/common';
 import {UzytkownicyEntity} from "../Entity/Uzytkownicy.entity";
 import {InjectRepository} from "@nestjs/typeorm";
-import {Repository} from "typeorm";
+import {Like, Repository} from "typeorm";
 
 export enum UserRole {
     Anonymous = 1,
@@ -18,4 +18,20 @@ export class UsersService {
     async findOne(Login: string): Promise<UzytkownicyEntity | undefined> {
         return this.UzytkownikRepository.findOneBy({ Login })
     }
+
+    findAll(fraza:string = ""): Promise<UzytkownicyEntity[]> {
+        let where = {}
+        if (fraza.length) {
+          where = {Login: Like(`%${fraza}%`)}
+        }
+        return this.UzytkownikRepository.find({where});
+      }
+      async remove(id: string): Promise<void> {
+        await this.UzytkownikRepository.delete(id);
+      }
+    
+      async save(Uzytkownicy: UzytkownicyEntity): Promise<UzytkownicyEntity> {
+        console.log(Uzytkownicy);
+        return await this.UzytkownikRepository.save(Uzytkownicy);
+      }
 }

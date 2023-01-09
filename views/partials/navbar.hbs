@@ -32,6 +32,11 @@
         <li class="nav-item">
           <a class="nav-link" href="http://localhost:3000/Statki_gwiezdne/lista">Statki gwiezdne</a>
         </li>
+        {{#if user.isAdmin }}
+        <li class="nav-item">
+          <a class="nav-link" href="http://localhost:3000/uzytkownicy/lista">Użytkownicy</a>
+        </li>
+        {{/if}}
       </ul>
       <span class="navbar-text">
           <form class="d-flex" method='post' action='http://localhost:3000/logout'>

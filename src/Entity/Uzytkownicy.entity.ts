@@ -9,5 +9,5 @@ export class UzytkownicyEntity {
   Password: string;
 
   @Column()
-  Role: string;
+  Role: number;
 }

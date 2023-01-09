@@ -1,4 +1,10 @@
 <div class="container">
+        <form action="lista" method="get">
+            <div class="input-group mb-3">
+            <input class="btn btn-primary" type="submit" value="Szukaj" />
+            <input class="form-control" type="text" value="" placeholder="Wyszukaj po nazwie..." name="fraza"/>
+        </form>
+    </div>
     {{#if user.isAdmin }}
         <a class="btn btn-sm btn-primary" href="planety_formularz/0">Dodaj</a>
     {{/if}}
@@ -18,7 +24,7 @@
             {{#each planety}}
                 <tr>  
                     <td>{{this.ID}}</td>
-                    <td>{{this.ID_Gwiazdy}}</td>
+                    <td>{{this.gwiazda.Nazwa}} (ID:{{this.ID_Gwiazdy}})</td>
                     <td>{{this.Nazwa}}</td>
                     <td>{{this.Typ}}</td>
                     <td>{{this.Rzadkosc}}</td>

@@ -4,6 +4,7 @@ import {
   Get,
   Param,
   Post,
+  Query,
   Res,
   UseGuards,
 } from '@nestjs/common';
@@ -22,8 +23,8 @@ export class GalaktykiController {
   @Roles([UserRole.User, UserRole.Admin])
   @UseGuards(RolesGuard)
   @Get('lista')
-  async lista(@User() user, @Res() res) {
-    const galaktyki = await this.GalaktykiService.findAll();
+  async lista(@User() user, @Res() res, @Query() query) {
+    const galaktyki = await this.GalaktykiService.findAll(query.fraza);
     return res.render('Galaktyki', { galaktyki, user });
   }
 
@@ -45,6 +46,7 @@ export class GalaktykiController {
     await this.GalaktykiService.remove(params.id);
     res.status(200).redirect('/Galaktyki/lista');
   }
+  
   @Roles([UserRole.Admin])
   @UseGuards(RolesGuard)
   @Get('galaktyka-formularz/:id')

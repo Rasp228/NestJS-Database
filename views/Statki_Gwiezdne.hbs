@@ -1,4 +1,8 @@
 <div class="container">
+        <div class="input-group mb-3">
+        <input class="btn btn-primary" type="submit" value="Szukaj" />
+        <input class="form-control" type="text" value="" placeholder="Wyszukaj po typie..." name="fraza"/>
+    </div>
     {{#if user.isAdmin }}
         <a class="btn btn-sm btn-primary" href="statki_gwiezdne_formularz/0">Dodaj</a>
     {{/if}}
@@ -10,7 +14,9 @@
             <th>Typ_Statku</th>
             <th>Ilosc_slotow_technologii</th>
             <th>Zasieg_hipernapendu</th>
+            {{#if user.isAdmin }}
             <th>Akcje</th>
+             {{/if}}
         </tr>
             {{#each statki_gwiezdne}}
                 <tr>  
@@ -20,7 +26,6 @@
                     <td>{{this.Typ_Statku}}</td>
                     <td>{{this.Ilosc_slotow_technologii}}</td>
                     <td>{{this.Zasieg_hipernapendu}}</td>
-                    {{ user.isAdmin }}
                     {{#if ../user.isAdmin}}
                     <td>
                         <a class="btn btn-sm btn-primary" href="statki_gwiezdne_formularz/{{this.ID}}">Edytuj</a> 

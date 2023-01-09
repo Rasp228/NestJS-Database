@@ -1,4 +1,4 @@
-import {Body, Controller, Get, Param, Post, Render, Res, UseGuards} from '@nestjs/common';
+import {Body, Controller, Get, Param, Post, Query, Render, Res, UseGuards} from '@nestjs/common';
 import {HttpException} from '@nestjs/common/exceptions';
 import {GwiazdyService} from '../Service/Gwiazdy.service';
 import { RolesGuard } from '../guards/roles.guards';
@@ -15,8 +15,8 @@ export class GwiazdyController {
   @Roles([UserRole.User, UserRole.Admin])
   @UseGuards(RolesGuard)
   @Get('lista')
-  async lista(@User() user, @Res() res) {
-      const gwiazdy = await this.GwiazdyService.findAll();
+  async lista(@User() user, @Res() res, @Query() query) {
+      const gwiazdy = await this.GwiazdyService.findAll(query.fraza);
       const galaktyki = await this.GalaktykiService.findAll();
       return res.render('Gwiazdy', { gwiazdy, user, galaktyki });
   }
