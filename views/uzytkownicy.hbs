@@ -1,0 +1,27 @@
+<div class="container">
+    <form action="lista" method="get">
+        <div class="input-group mb-3">
+            <input class="btn btn-primary" type="submit" value="Szukaj" />
+            <input class="form-control" type="text" value="" placeholder="Wyszukaj po nazwie..." name="fraza"/>
+        </div>
+    </form>
+    <a class="btn btn-sm btn-primary" href="user_rejestracja/0">Dodaj</a>
+    <table class="table">
+        <tr>
+            <th>Login</th>
+            <th>Password</th>
+            <th>Role</th>
+            <th>Akcje</th>
+        </tr>
+            {{#each uzytkownicy}}
+                <tr>
+                    <td>{{this.Login}}</td>
+                    <td>{{this.Password}}</td>
+                    <td>{{this.Role}}</td>
+                    <td>
+                        <a class="btn btn-danger btn-sm" href="delete/{{this.ID}}">Usuń</a>
+                    </td>
+                </tr>
+            {{/each}}
+    </table>
+</div>
