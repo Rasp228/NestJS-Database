@@ -1,12 +1,19 @@
 <div class="container">
-    <form action="http://localhost:3000/Galaktyki/{{#if galaktyka.ID}}update{{else}}add{{/if}}" method='post'>
-        {{#if galaktyka.ID}}
-            <input type="hidden" name='ID' value='{{galaktyka.ID}}'>
+    <form action="http://localhost:3000/Ksiezyce/{{#if ksiezyc.ID}}update{{else}}add{{/if}}" method='post'>
+        {{#if ksiezyc.ID}}
+            <input type="hidden" name='ID' value='{{ksiezyc.ID}}'>
         {{/if}}
          <div class="mb-3">
-            <label for="nazwa" class="form-label">Nazwa galaktyki</label>
-            <input type="text" class="form-control" id="nazwa" name="nazwa" value='{{galaktyka.Nazwa}}'>
-          </div>
+            <label for="Nazwa" class="form-label">Nazwa księżyca</label>
+            <input type="text" class="form-control" id="Nazwa" name="Nazwa" value='{{ksiezyc.Nazwa}}'>
+            <label for="ID_Planety" class="form-label">Planeta</label>  
+            <select id="ID_Planety" name="ID_Planety" class="form-select">     
+            {{#each planeta}}
+                <option value="{{this.ID}}">{{this.Nazwa}}</option>
+            {{/each}}
+            </select>   
+            <label for="Typ" class="form-label">Typ</label>
+            <input type="text" class="form-control" id="Typ" name="Typ" value='{{ksiezyc.Typ}}'>
           <button type="submit" class="btn btn-primary btn-sm">Zapisz</button>
     </form>
 </div>

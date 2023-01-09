@@ -1,11 +1,14 @@
 <div class="container">
+    {{#if user.isAdmin }}
+        <a class="btn btn-sm btn-primary" href="krysztaly_i_mineraly_formularz/0">Dodaj</a>
+    {{/if}}
     <table class="table">
         <tr>
             <th>ID</th>
             <th>ID_Planety</th>
             <th>ID_Ksiezyca</th>
             <th>Nazwa</th>
-            
+            <th>Akcje</th>
         </tr>
             {{#each krysztaly_i_mineraly}}
                 <tr>  
@@ -15,10 +18,12 @@
                     <td>{{this.Nazwa}}</td>
                     {{ user.isAdmin }}
                     {{#if ../user.isAdmin}}
-                    <td><a href="edit/{{this.ID}}">Edytuj</a> <a href="delete/{{this.ID}}">Usuń</a></td>
+                    <td>
+                        <a class="btn btn-sm btn-primary" href="krysztaly_i_mineraly_formularz/{{this.ID}}">Edytuj</a> 
+                        <a class="btn btn-danger btn-sm" href="delete/{{this.ID}}">Usuń</a>
+                    </td>
                     {{/if}}
                 </tr>
             {{/each}} 
     </table>
-    <a href="add/">Dodaj</a>
 </div>

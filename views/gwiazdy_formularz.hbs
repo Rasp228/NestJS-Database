@@ -6,10 +6,10 @@
          <div class="mb-3">
             <label for="nazwa" class="form-label">Nazwa gwiazdy</label>
             <input type="text" class="form-control" id="nazwa" name="nazwa" value='{{gwiazda.Nazwa}}'>
-            <label for="nazwa" class="form-label">ID Galaktyki</label>  
+            <label for="ID_Galaktyki" class="form-label">Galaktyka</label>  
             <select id="ID_Galaktyki" name="ID_Galaktyki" class="form-select">     
             {{#each galaktyki}}
-                <option value="{{this.Nazwa}}">{{this.Nazwa}}</option>
+                <option value="{{this.ID}}">{{this.Nazwa}}</option>
             {{/each}}
             </select>     
           </div>

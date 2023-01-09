@@ -1,12 +1,17 @@
 <div class="container">
-    <form action="http://localhost:3000/Galaktyki/{{#if galaktyka.ID}}update{{else}}add{{/if}}" method='post'>
-        {{#if galaktyka.ID}}
-            <input type="hidden" name='ID' value='{{galaktyka.ID}}'>
+    <form action="http://localhost:3000/Materialy/{{#if material.ID}}update{{else}}add{{/if}}" method='post'>
+        {{#if material.ID}}
+            <input type="hidden" name='ID' value='{{material.ID}}'>
         {{/if}}
          <div class="mb-3">
-            <label for="nazwa" class="form-label">Nazwa galaktyki</label>
-            <input type="text" class="form-control" id="nazwa" name="nazwa" value='{{galaktyka.Nazwa}}'>
-          </div>
+            <label for="Nazwa" class="form-label">Nazwa materiału</label>
+            <input type="text" class="form-control" id="Nazwa" name="Nazwa" value='{{material.Nazwa}}'>
+                        <label for="Wartosc" class="form-label">Wartość</label>
+            <input type="text" class="form-control" id="Wartosc" name="Wartosc" value='{{material.Wartosc}}'>
+                        <label for="Rzadkosc" class="form-label">Rzadkość</label>
+            <input type="text" class="form-control" id="Rzadkosc" name="Rzadkosc" value='{{material.Rzadkosc}}'>
+                        <label for="Grupa" class="form-label">Grupa</label>
+            <input type="text" class="form-control" id="Grupa" name="Grupa" value='{{material.Grupa}}'>
           <button type="submit" class="btn btn-primary btn-sm">Zapisz</button>
     </form>
 </div>

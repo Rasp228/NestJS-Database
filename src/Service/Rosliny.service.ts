@@ -29,4 +29,12 @@ export class RoslinyService {
   async remove(id: string): Promise<void> {
     await this.RoslinyRepository.delete(id);
   }
+
+  async save(Roslina: Rosliny): Promise<Rosliny> {
+    return await this.RoslinyRepository.save(Roslina);
+  }
+
+  async update(Roslina: Rosliny): Promise<void>{
+    await this.RoslinyRepository.update({ID:Roslina.ID}, {Rodzaj:Roslina.Rodzaj, Dieta:Roslina.Dieta, ID_Planety:Roslina.ID_Planety, ID_Ksiezyca:Roslina.ID_Ksiezyca, Wiek:Roslina.Wiek, Korzenie:Roslina.Korzenie, Typ:Roslina.Typ, Notatka:Roslina.Notatka})
+  }
 }

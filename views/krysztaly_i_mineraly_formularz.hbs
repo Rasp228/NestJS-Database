@@ -1,12 +1,25 @@
 <div class="container">
-    <form action="http://localhost:3000/Galaktyki/{{#if galaktyka.ID}}update{{else}}add{{/if}}" method='post'>
-        {{#if galaktyka.ID}}
-            <input type="hidden" name='ID' value='{{galaktyka.ID}}'>
+    <form action="http://localhost:3000/Krysztaly_i_mineraly/{{#if krysztal_i_mineral.ID}}update{{else}}add{{/if}}" method='post'>
+        {{#if krysztal_i_mineral.ID}}
+            <input type="hidden" name='ID' value='{{krysztal_i_mineral.ID}}'>
         {{/if}}
          <div class="mb-3">
-            <label for="nazwa" class="form-label">Nazwa galaktyki</label>
-            <input type="text" class="form-control" id="nazwa" name="nazwa" value='{{galaktyka.Nazwa}}'>
-          </div>
+            <label for="Nazwa" class="form-label">Nazwa kryształu/minerału</label>
+            <input type="text" class="form-control" id="Nazwa" name="Nazwa" value='{{krysztal_i_mineral.Nazwa}}'>
+            <label for="ID_Planety" class="form-label">Planeta</label>  
+            <select id="ID_Planety" name="ID_Planety" class="form-select">     
+            {{#each planeta}}
+                <option value="{{this.ID}}">{{this.Nazwa}}</option>
+            {{/each}}
+                <option value=-1>Brak</option>
+            </select>
+            <label for="ID_Ksiezyca" class="form-label">Księżyc</label>  
+            <select id="ID_Ksiezyca" name="ID_Ksiezyca" class="form-select">     
+            {{#each ksiezyc}}
+                    <option value="{{this.ID}}">{{this.Nazwa}}</option>
+            {{/each}}
+                <option value=-1>Brak</option>
+            </select>
           <button type="submit" class="btn btn-primary btn-sm">Zapisz</button>
     </form>
 </div>

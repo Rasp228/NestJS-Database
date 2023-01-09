@@ -29,4 +29,12 @@ export class Krysztaly_i_mineralyService {
   async remove(id: string): Promise<void> {
     await this.Krysztaly_i_mineralyRepository.delete(id);
   }
+
+  async save(krysztal_i_mineral: Krysztaly_i_mineraly): Promise<Krysztaly_i_mineraly> {
+    return await this.Krysztaly_i_mineralyRepository.save(krysztal_i_mineral);
+  }
+
+  async update(krysztal_i_mineral: Krysztaly_i_mineraly): Promise<void>{
+    await this.Krysztaly_i_mineralyRepository.update({ID:krysztal_i_mineral.ID}, {Nazwa:krysztal_i_mineral.Nazwa, ID_Planety:krysztal_i_mineral.ID_Planety, ID_Ksiezyca:krysztal_i_mineral.ID_Ksiezyca})
+  }
 }

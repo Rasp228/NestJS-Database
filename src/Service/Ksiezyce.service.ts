@@ -29,4 +29,12 @@ export class KsiezyceService {
   async remove(id: string): Promise<void> {
     await this.KsiezyceRepository.delete(id);
   }
+
+  async save(Ksiezyc: Ksiezyce): Promise<Ksiezyce> {
+    return await this.KsiezyceRepository.save(Ksiezyc);
+  }
+
+  async update(Ksiezyc: Ksiezyce): Promise<void>{
+    await this.KsiezyceRepository.update({ID:Ksiezyc.ID}, {Nazwa:Ksiezyc.Nazwa, Typ:Ksiezyc.Typ, ID_Planety:Ksiezyc.ID_Planety})
+  }
 }

@@ -35,6 +35,6 @@ export class PlanetyService {
   }
 
   async update(Planeta: Planety): Promise<void>{
-   // await this.PlanetyRepository.update({ID:Planeta.ID}, {Nazwa:Planeta.Nazwa}, {Typ:Planeta.Typ}, {Nazwa:Planeta.Nazwa}, {Nazwa:Planeta.Nazwa}, {Nazwa:Planeta.Nazwa}, {Nazwa:Planeta.Nazwa}, {Nazwa:Planeta.Nazwa})
+    await this.PlanetyRepository.update({ID:Planeta.ID}, {Nazwa:Planeta.Nazwa, Typ:Planeta.Typ, Rzadkosc:Planeta.Rzadkosc, Teren:Planeta.Teren, Flora:Planeta.Flora, Fauna:Planeta.Fauna, Straznicy:Planeta.Straznicy, ID_Gwiazdy:Planeta.ID_Gwiazdy})
   }
 }

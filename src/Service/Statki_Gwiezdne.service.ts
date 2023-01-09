@@ -28,4 +28,12 @@ export class Statki_GwiezdneService {
   async remove(id: string): Promise<void> {
     await this.Statki_GwiezdneRepository.delete(id);
   }
+
+  async save(Statki_Gwiezdne: Statki_Gwiezdne): Promise<Statki_Gwiezdne> {
+    return await this.Statki_GwiezdneRepository.save(Statki_Gwiezdne);
+  }
+
+  async update(Statki_Gwiezdne: Statki_Gwiezdne): Promise<void>{
+    await this.Statki_GwiezdneRepository.update({ID:Statki_Gwiezdne.ID}, {Cena:Statki_Gwiezdne.Cena, Klasa:Statki_Gwiezdne.Klasa, Typ_Statku:Statki_Gwiezdne.Typ_Statku, Ilosc_slotow_technologii:Statki_Gwiezdne.Ilosc_slotow_technologii, Zasieg_hipernapendu:Statki_Gwiezdne.Zasieg_hipernapendu})
+  }
 }

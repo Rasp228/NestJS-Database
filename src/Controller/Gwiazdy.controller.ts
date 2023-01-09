@@ -36,6 +36,7 @@ export class GwiazdyController {
     await this.GwiazdyService.remove(params.id);
     res.status(200).redirect('/Gwiazdy/lista');
   }
+  
   @Roles([UserRole.Admin])
   @UseGuards(RolesGuard)
   @Get('gwiazdy_formularz/:id')

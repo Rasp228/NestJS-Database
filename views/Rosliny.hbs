@@ -1,4 +1,7 @@
 <div class="container">
+    {{#if user.isAdmin }}
+        <a class="btn btn-sm btn-primary" href="rosliny_formularz/0">Dodaj</a>
+    {{/if}}
     <table class="table">
         <tr>
             <th>ID</th>
@@ -16,7 +19,7 @@
                 <tr>  
                     <td>{{this.ID}}</td>
                     <td>{{this.ID_Planety}}</td>
-                    <td>{{this.ID_Ksiezyca}}<td>
+                    <td>{{this.ID_Ksiezyca}}</td>
                     <td>{{this.Rodzaj}}</td>
                     <td>{{this.Dieta}}</td>
                     <td>{{this.Wiek}}</td>
@@ -25,10 +28,12 @@
                     <td>{{this.Notatka}}</td>
                     {{ user.isAdmin }}
                     {{#if ../user.isAdmin}}
-                    <td><a href="edit/{{this.ID}}">Edytuj</a> <a href="delete/{{this.ID}}">Usuń</a></td>
+                    <td>
+                        <a class="btn btn-sm btn-primary" href="rosliny_formularz/{{this.ID}}">Edytuj</a> 
+                        <a class="btn btn-danger btn-sm" href="delete/{{this.ID}}">Usuń</a>
+                    </td>
                     {{/if}}
                 </tr>
             {{/each}} 
     </table>
-    <a href="add/">Dodaj</a>
 </div>

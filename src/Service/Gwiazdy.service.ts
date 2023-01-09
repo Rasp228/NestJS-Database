@@ -35,6 +35,6 @@ export class GwiazdyService {
   }
 
   async update(Gwiazda: Gwiazdy): Promise<void>{
-    await this.GwiazdyRepository.update({ID:Gwiazda.ID}, {Nazwa:Gwiazda.Nazwa, ID_Galaktyki:Gwiazda.ID_Galaktyki})
+    await this.GwiazdyRepository.update({ID:Gwiazda.ID}, {ID_Galaktyki:Gwiazda.ID_Galaktyki, Nazwa:Gwiazda.Nazwa})
   }
 }

@@ -29,4 +29,12 @@ export class ZwierzetaService {
   async remove(id: string): Promise<void> {
     await this.ZwierzetaRepository.delete(id);
   }
+
+  async save(Zwierze: Zwierzeta): Promise<Zwierzeta> {
+    return await this.ZwierzetaRepository.save(Zwierze);
+  }
+
+  async update(Zwierze: Zwierzeta): Promise<void>{
+    await this.ZwierzetaRepository.update({ID:Zwierze.ID}, {Nazwa:Zwierze.Nazwa, ID_Planety:Zwierze.ID_Planety, Ekosystem:Zwierze.Ekosystem, Dieta:Zwierze.Dieta, Temperament:Zwierze.Temperament, Wiek:Zwierze.Wiek, Plec:Zwierze.Plec, Wielkosc:Zwierze.Wielkosc,})
+  }
 }

@@ -29,4 +29,12 @@ export class MaterialyService {
   async remove(id: string): Promise<void> {
     await this.MaterialyRepository.delete(id);
   }
+
+  async save(Material: Materialy): Promise<Materialy> {
+    return await this.MaterialyRepository.save(Material);
+  }
+
+  async update(Material: Materialy): Promise<void>{
+    await this.MaterialyRepository.update({ID:Material.ID}, {Nazwa:Material.Nazwa, Wartosc:Material.Wartosc, Rzadkosc:Material.Rzadkosc, Grupa:Material.Grupa})
+  }
 }

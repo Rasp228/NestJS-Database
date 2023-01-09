@@ -1,11 +1,19 @@
 <div class="container">
-    <form action="http://localhost:3000/Galaktyki/{{#if galaktyka.ID}}update{{else}}add{{/if}}" method='post'>
-        {{#if galaktyka.ID}}
-            <input type="hidden" name='ID' value='{{galaktyka.ID}}'>
+    <form action="http://localhost:3000/statki_gwiezdne/{{#if statki_gwiezdne.ID}}update{{else}}add{{/if}}" method='post'>
+        {{#if statki_gwiezdne.ID}}
+            <input type="hidden" name='ID' value='{{statki_gwiezdne.ID}}'>
         {{/if}}
          <div class="mb-3">
-            <label for="nazwa" class="form-label">Nazwa galaktyki</label>
-            <input type="text" class="form-control" id="nazwa" name="nazwa" value='{{galaktyka.Nazwa}}'>
+            <label for="cena" class="form-label">Cena (zł)</label>
+            <input type="number" class="form-control" id="cena" name="cena" value='{{statki_gwiezdne.Cena}}'>
+            <label for="klasa" class="form-label">Klasa</label>
+            <input type="text" class="form-control" id="klasa" name="klasa" value='{{statki_gwiezdne.Klasa}}'>
+            <label for="typ" class="form-label">Typ</label>
+            <input type="text" class="form-control" id="typ" name="typ" value='{{statki_gwiezdne.Typ}}'>
+            <label for="ilosc_slotow_technologii" class="form-label">Ilość slotów technologii</label>
+            <input type="number" class="form-control" id="ilosc_slotow_technologii" name="ilosc_slotow_technologii" value='{{statki_gwiezdne.Ilosc_slotow_technologii}}'>
+            <label for="zasieg_hipernapendu" class="form-label">Zasieg hipernapędu</label>
+            <input type="text" class="form-control" id="zasieg_hipernapendu" name="zasieg_hipernapendu" value='{{statki_gwiezdne.Zasieg_hipernapendu}}'>
           </div>
           <button type="submit" class="btn btn-primary btn-sm">Zapisz</button>
     </form>

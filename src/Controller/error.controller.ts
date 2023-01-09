@@ -14,7 +14,7 @@ export class ErrorController {
 
     switch (id) {
       case '1':
-        message = 'Galaxy cannot be removed because contain some stars!';
+        message = 'Cannot be removed because contain some object!';
         break;
       default:
         message = 'Something went wrong :/...';

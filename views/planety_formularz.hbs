@@ -1,11 +1,29 @@
 <div class="container">
-    <form action="http://localhost:3000/Galaktyki/{{#if galaktyka.ID}}update{{else}}add{{/if}}" method='post'>
-        {{#if galaktyka.ID}}
-            <input type="hidden" name='ID' value='{{galaktyka.ID}}'>
+    <form action="http://localhost:3000/Planety/{{#if planeta.ID}}update{{else}}add{{/if}}" method='post'>
+        {{#if planeta.ID}}
+            <input type="hidden" name='ID' value='{{planeta.ID}}'>
         {{/if}}
          <div class="mb-3">
-            <label for="nazwa" class="form-label">Nazwa galaktyki</label>
-            <input type="text" class="form-control" id="nazwa" name="nazwa" value='{{galaktyka.Nazwa}}'>
+            <label for="nazwa" class="form-label">Nazwa planety</label>
+            <input type="text" class="form-control" id="nazwa" name="nazwa" value='{{planeta.Nazwa}}'>
+            <label for="ID_Gwiazdy" class="form-label">Gwiazda</label>  
+            <select id="ID_Gwiazdy" name="ID_Gwiazdy" class="form-select">     
+            {{#each gwiazda}}
+                <option value="{{this.ID}}">{{this.Nazwa}}</option>
+            {{/each}}
+            </select>   
+            <label for="Typ" class="form-label">Typ</label>
+            <input type="text" class="form-control" id="Typ" name="Typ" value='{{planeta.Typ}}'>
+            <label for="Rzadkosc" class="form-label">Rzadkosc</label>
+            <input type="text" class="form-control" id="Rzadkosc" name="Rzadkosc" value='{{planeta.Rzadkosc}}'>
+            <label for="Teren" class="form-label">Teren</label>
+            <input type="text" class="form-control" id="Teren" name="Teren" value='{{planeta.Teren}}'>
+            <label for="Flora" class="form-label">Flora</label>
+            <input type="text" class="form-control" id="Flora" name="Flora" value='{{planeta.Flora}}'>
+            <label for="Fauna" class="form-label">Fauna</label>
+            <input type="text" class="form-control" id="Fauna" name="Fauna" value='{{planeta.Fauna}}'>
+            <label for="Straznicy" class="form-label">Straznicy</label>
+            <input type="text" class="form-control" id="Straznicy" name="Straznicy" value='{{planeta.Straznicy}}'>
           </div>
           <button type="submit" class="btn btn-primary btn-sm">Zapisz</button>
     </form>

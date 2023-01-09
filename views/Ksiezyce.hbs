@@ -1,5 +1,7 @@
 <div class="container">
-    <a href="add/">Dodaj</a>
+    {{#if user.isAdmin }}
+        <a class="btn btn-sm btn-primary" href="ksiezyce_formularz/0">Dodaj</a>
+    {{/if}}
     <table class="table">
         <tr>
             <th>ID</th>
@@ -16,7 +18,8 @@
                     <td>{{this.Typ}}</td>
                     {{ user.isAdmin }}
                     {{#if ../user.isAdmin}}
-                    <td><a href="edit/{{this.ID}}">Edytuj</a> <a href="delete/{{this.ID}}">Usuń</a></td>
+                        <td><a href="ksiezyce_formularz/{{this.ID}}" class="btn btn-sm btn-primary">Edytuj</a> 
+                        <a href="delete/{{this.ID}}" class="btn btn-danger btn-sm">Usuń</a></td>
                     {{/if}}
                 </tr>
             {{/each}} 

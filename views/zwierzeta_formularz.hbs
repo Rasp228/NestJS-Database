@@ -1,12 +1,29 @@
 <div class="container">
-    <form action="http://localhost:3000/Galaktyki/{{#if galaktyka.ID}}update{{else}}add{{/if}}" method='post'>
-        {{#if galaktyka.ID}}
-            <input type="hidden" name='ID' value='{{galaktyka.ID}}'>
+    <form action="http://localhost:3000/Zwierzeta/{{#if zwierze.ID}}update{{else}}add{{/if}}" method='post'>
+        {{#if zwierze.ID}}
+            <input type="hidden" name='ID' value='{{zwierze.ID}}'>
         {{/if}}
          <div class="mb-3">
-            <label for="nazwa" class="form-label">Nazwa galaktyki</label>
-            <input type="text" class="form-control" id="nazwa" name="nazwa" value='{{galaktyka.Nazwa}}'>
-          </div>
+            <label for="Nazwa" class="form-label">Nazwa zwierzęcia</label>
+            <input type="text" class="form-control" id="Nazwa" name="Nazwa" value='{{zwierze.Nazwa}}'>
+            <label for="ID_Planety" class="form-label">Planeta</label>  
+            <select id="ID_Planety" name="ID_Planety" class="form-select">     
+            {{#each planeta}}
+                <option value="{{this.ID}}">{{this.Nazwa}}</option>
+            {{/each}}
+            </select>   
+                        <label for="Ekosystem" class="form-label">Ekosystem</label>
+            <input type="text" class="form-control" id="Ekosystem" name="Ekosystem" value='{{zwierze.Ekosystem}}'>
+                        <label for="Dieta" class="form-label">Dieta</label>
+            <input type="text" class="form-control" id="Dieta" name="Dieta" value='{{zwierze.Dieta}}'>
+                        <label for="Temperament" class="form-label">Temperament</label>
+            <input type="text" class="form-control" id="Temperament" name="Temperament" value='{{zwierze.Temperament}}'>
+                        <label for="Wiek" class="form-label">Wiek</label>
+            <input type="text" class="form-control" id="Wiek" name="Wiek" value='{{zwierze.Wiek}}'>
+                        <label for="Plec" class="form-label">Płeć</label>
+            <input type="text" class="form-control" id="Plec" name="Plec" value='{{zwierze.Plec}}'>
+                        <label for="Wielkosc" class="form-label">Wielkość</label>
+            <input type="text" class="form-control" id="Wielkosc" name="Wielkosc" value='{{zwierze.Wielkosc}}'>
           <button type="submit" class="btn btn-primary btn-sm">Zapisz</button>
     </form>
 </div>
