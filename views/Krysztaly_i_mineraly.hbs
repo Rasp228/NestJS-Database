@@ -1,7 +1,9 @@
 <div class="container">
+    <form action="lista" method="get">
         <div class="input-group mb-3">
         <input class="btn btn-primary" type="submit" value="Szukaj" />
         <input class="form-control" type="text" value="" placeholder="Wyszukaj po nazwie..." name="fraza"/>
+        </form>
     </div>
     {{#if user.isAdmin }}
         <a class="btn btn-sm btn-primary" href="krysztaly_i_mineraly_formularz/0">Dodaj</a>
@@ -12,13 +14,15 @@
             <th>ID_Planety</th>
             <th>ID_Ksiezyca</th>
             <th>Nazwa</th>
+            {{#if user.isAdmin }}
             <th>Akcje</th>
+            {{/if}}
         </tr>
             {{#each krysztaly_i_mineraly}}
                 <tr>  
                     <td>{{this.ID}}</td>
-                    <td>{{this.ID_Planety}}</td>
-                    <td>{{this.ID_Ksiezyca}}</td>
+                    <td>{{#if this.planeta.Nazwa}}{{this.planeta.Nazwa}} (ID:{{this.ID_Planety}}){{else}}Brak{{/if}}</td>
+                    <td>{{#if this.ksiezyc.Nazwa}}{{this.ksiezyc.Nazwa}} (ID:{{this.ID_Ksiezyca}}){{else}}Brak{{/if}}</td>
                     <td>{{this.Nazwa}}</td>
                     {{ user.isAdmin }}
                     {{#if ../user.isAdmin}}

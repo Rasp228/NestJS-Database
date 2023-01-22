@@ -1,6 +1,6 @@
 import { Injectable } from '@nestjs/common';
 import { InjectRepository } from '@nestjs/typeorm';
-import { Repository } from 'typeorm';
+import { Like, Repository } from 'typeorm';
 import { Krysztaly_i_mineraly } from '../Entity/Krysztaly_i_mineraly.entity';
 
 @Injectable()
@@ -10,8 +10,12 @@ export class Krysztaly_i_mineralyService {
     private Krysztaly_i_mineralyRepository: Repository<Krysztaly_i_mineraly>,
   ) {}
 
-  findAll(): Promise<Krysztaly_i_mineraly[]> {
-    return this.Krysztaly_i_mineralyRepository.find();
+  findAll(fraza:string = ""): Promise<Krysztaly_i_mineraly[]> {
+    let where = {}
+    if (fraza.length) {
+      where = {Nazwa: Like(`%${fraza}%`)}
+    }
+    return this.Krysztaly_i_mineralyRepository.find({where, relations: { ksiezyc: true, planeta: true }});
   }
 
   async findOneWithKrysztaly_i_mineraly(ID: number): Promise<Krysztaly_i_mineraly> {

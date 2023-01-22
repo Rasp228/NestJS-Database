@@ -1,6 +1,6 @@
 import { Injectable } from '@nestjs/common';
 import { InjectRepository } from '@nestjs/typeorm';
-import { Repository } from 'typeorm';
+import { Like, Repository } from 'typeorm';
 import { Statki_Gwiezdne } from '../Entity/Statki_Gwiezdne.entity';
 
 @Injectable()
@@ -10,8 +10,12 @@ export class Statki_GwiezdneService {
     private Statki_GwiezdneRepository: Repository<Statki_Gwiezdne>,
   ) {}
 
-  findAll(): Promise<Statki_Gwiezdne[]> {
-    return this.Statki_GwiezdneRepository.find();
+  findAll(fraza:string = ""): Promise<Statki_Gwiezdne[]> {
+    let where = {}
+    if (fraza.length) {
+      where = {Typ_Statku: Like(`%${fraza}%`)}
+    }
+    return this.Statki_GwiezdneRepository.find({where});
   }
 
   async findOneWithStatki_Gwiezdne(ID: number): Promise<Statki_Gwiezdne> {

@@ -1,4 +1,4 @@
-import {Body, Controller, Get, Param, Post, Render, Res, UseGuards} from '@nestjs/common';
+import {Body, Controller, Get, Param, Post, Query, Res, UseGuards} from '@nestjs/common';
 import {HttpException} from '@nestjs/common/exceptions';
 import { Roles } from 'src/decorators/roles.decorator';
 import { User } from 'src/decorators/user.decorator';
@@ -15,8 +15,8 @@ export class KsiezyceController {
   @Roles([UserRole.User, UserRole.Admin])
   @UseGuards(RolesGuard)
   @Get('lista')
-  async lista(@User() user, @Res() res) {
-    const ksiezyce = await this.KsiezyceService.findAll();
+  async lista(@User() user, @Res() res, @Query() query) {
+    const ksiezyce = await this.KsiezyceService.findAll(query.fraza);
     const planety = await this.PlanetyService.findAll();
     return res.render('Ksiezyce', { planety, user, ksiezyce });
   }

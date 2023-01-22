@@ -1,7 +1,9 @@
 <div class="container">
+     <form action="lista" method="get">
         <div class="input-group mb-3">
         <input class="btn btn-primary" type="submit" value="Szukaj" />
         <input class="form-control" type="text" value="" placeholder="Wyszukaj po nazwie..." name="fraza"/>
+        </form>
     </div>
     {{#if user.isAdmin }}
         <a class="btn btn-sm btn-primary" href="materialy_formularz/0">Dodaj</a>
@@ -13,7 +15,9 @@
             <th>Wartosc</th>
             <th>Rzadkosc</th>
             <th>Grupa</th>
+            {{#if user.isAdmin }}
             <th>Akcje</th>
+            {{/if}}
         </tr>
             {{#each materialy}}
                 <tr>  
@@ -22,7 +26,6 @@
                     <td>{{this.Wartosc}}</td>
                     <td>{{this.Rzadkosc}}</td>
                     <td>{{this.Grupa}}</td>
-                    {{ user.isAdmin }}
                     {{#if ../user.isAdmin}}
                     <td>
                         <a class="btn btn-sm btn-primary" href="materialy_formularz/{{this.ID}}">Edytuj</a> 

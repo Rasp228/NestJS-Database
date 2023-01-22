@@ -1,4 +1,4 @@
-import {Body, Controller, Get, Param, Post, Render, Res, UseGuards} from '@nestjs/common';
+import {Body, Controller, Get, Param, Post, Query, Render, Res, UseGuards} from '@nestjs/common';
 import {HttpException} from '@nestjs/common/exceptions';
 import { Roles } from 'src/decorators/roles.decorator';
 import { User } from 'src/decorators/user.decorator';
@@ -15,8 +15,8 @@ export class ZwierzetaController {
   @Roles([UserRole.User, UserRole.Admin])
   @UseGuards(RolesGuard)
   @Get('lista')
-  async lista(@User() user, @Res() res) {
-    const zwierzeta = await this.ZwierzetaService.findAll();
+  async lista(@User() user, @Res() res, @Query() query) {
+    const zwierzeta = await this.ZwierzetaService.findAll(query.fraza);
     const planety = await this.PlanetyService.findAll();
     return res.render('Zwierzeta', { planety, user, zwierzeta });
   }

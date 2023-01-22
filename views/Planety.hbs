@@ -19,7 +19,9 @@
             <th>Flora</th>
             <th>Fauna</th>
             <th>Straznicy</th>
+            {{#if user.isAdmin }}
             <th>Akcje</th>
+            {{/if}}
         </tr>
             {{#each planety}}
                 <tr>  
@@ -32,7 +34,6 @@
                     <td>{{this.Flora}}</td>
                     <td>{{this.Fauna}}</td>
                     <td>{{this.Straznicy}}</td>
-                    {{ user.isAdmin }}
                     {{#if ../user.isAdmin}}
                     <td><a class="btn btn-sm btn-primary" href="planety_formularz/{{this.ID}}">Edytuj</a> 
                     <a class="btn btn-danger btn-sm" href="delete/{{this.ID}}">Usuń</a></td>

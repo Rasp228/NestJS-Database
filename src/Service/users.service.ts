@@ -31,7 +31,10 @@ export class UsersService {
       }
     
       async save(Uzytkownicy: UzytkownicyEntity): Promise<UzytkownicyEntity> {
-        console.log(Uzytkownicy);
         return await this.UzytkownikRepository.save(Uzytkownicy);
+      }
+
+      async update(Uzytkownicy: UzytkownicyEntity): Promise<void>{
+        await this.UzytkownikRepository.update({Login:Uzytkownicy.Login}, {Login:Uzytkownicy.Login, Password:Uzytkownicy.Password, Role:Uzytkownicy.Role})
       }
 }

@@ -1,7 +1,9 @@
 <div class="container">
+    <form action="lista" method="get">
         <div class="input-group mb-3">
         <input class="btn btn-primary" type="submit" value="Szukaj" />
         <input class="form-control" type="text" value="" placeholder="Wyszukaj po nazwie..." name="fraza"/>
+    </form>
     </div>
     {{#if user.isAdmin }}
         <a class="btn btn-sm btn-primary" href="ksiezyce_formularz/0">Dodaj</a>
@@ -9,18 +11,19 @@
     <table class="table">
         <tr>
             <th>ID</th>
-            <th>ID_Planety</th>
+            <th>Planeta</th>
             <th>Nazwa</th>
             <th>Typ</th>
+            {{#if user.isAdmin }}
             <th>Akcje</th>
+            {{/if}}
         </tr>
             {{#each ksiezyce}}
                 <tr>  
                     <td>{{this.ID}}</td>
-                    <td>{{this.ID_Planety}}</td>
+                    <td>{{this.planeta.Nazwa}} (ID:{{this.ID_Planety}})</td>
                     <td>{{this.Nazwa}}</td>
                     <td>{{this.Typ}}</td>
-                    {{ user.isAdmin }}
                     {{#if ../user.isAdmin}}
                         <td><a href="ksiezyce_formularz/{{this.ID}}" class="btn btn-sm btn-primary">Edytuj</a> 
                         <a href="delete/{{this.ID}}" class="btn btn-danger btn-sm">Usuń</a></td>

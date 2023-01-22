@@ -1,4 +1,4 @@
-import {Body, Controller, Get, Param, Post, Render, Res, UseGuards} from '@nestjs/common';
+import {Body, Controller, Get, Param, Post, Query, Render, Res, UseGuards} from '@nestjs/common';
 import {HttpException} from '@nestjs/common/exceptions';
 import { Roles } from 'src/decorators/roles.decorator';
 import { User } from 'src/decorators/user.decorator';
@@ -14,8 +14,8 @@ export class Statki_GwiezdneController {
   @Roles([UserRole.User, UserRole.Admin])
   @UseGuards(RolesGuard)
   @Get('lista')
-  async lista(@User() user, @Res() res) {
-    const statki_gwiezdne = await this.Statki_GwiezdneService.findAll();
+  async lista(@User() user, @Res() res, @Query() query) {
+    const statki_gwiezdne = await this.Statki_GwiezdneService.findAll(query.fraza);
     return res.render('Statki_Gwiezdne', { user, statki_gwiezdne });
 }
 
@@ -40,7 +40,7 @@ export class Statki_GwiezdneController {
     if (!statek_gwiezdny) {
       statek_gwiezdny = new Statki_Gwiezdne();
     }
-    return res.render('planety_formularz', { statek_gwiezdny });
+    return res.render('statki_gwiezdne_formularz', { statek_gwiezdny });
   }
   @Roles([UserRole.Admin])
   @UseGuards(RolesGuard)

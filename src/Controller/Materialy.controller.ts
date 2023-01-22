@@ -1,4 +1,4 @@
-import {Body, Controller, Get, Param, Post, Render, Res, UseGuards} from '@nestjs/common';
+import {Body, Controller, Get, Param, Post, Query, Render, Res, UseGuards} from '@nestjs/common';
 import {HttpException} from '@nestjs/common/exceptions';
 import { Roles } from 'src/decorators/roles.decorator';
 import { User } from 'src/decorators/user.decorator';
@@ -14,8 +14,8 @@ export class MaterialyController {
   @Roles([UserRole.User, UserRole.Admin])
   @UseGuards(RolesGuard)
   @Get('lista')
-  async lista(@User() user, @Res() res) {
-    const materialy = await this.MaterialyService.findAll();
+  async lista(@User() user, @Res() res, @Query() query) {
+    const materialy = await this.MaterialyService.findAll(query.fraza);
     return res.render('Materialy', { user, materialy });
   }
 

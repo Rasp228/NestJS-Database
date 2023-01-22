@@ -1,6 +1,6 @@
 import { Injectable } from '@nestjs/common';
 import { InjectRepository } from '@nestjs/typeorm';
-import { Repository } from 'typeorm';
+import { Like, Repository } from 'typeorm';
 import { Materialy } from '../Entity/Materialy.entity';
 
 @Injectable()
@@ -10,8 +10,12 @@ export class MaterialyService {
     private MaterialyRepository: Repository<Materialy>,
   ) {}
 
-  findAll(): Promise<Materialy[]> {
-    return this.MaterialyRepository.find();
+  findAll(fraza:string = ""): Promise<Materialy[]> {
+    let where = {}
+    if (fraza.length) {
+      where = {Nazwa: Like(`%${fraza}%`)}
+    }
+    return this.MaterialyRepository.find({where});
   }
 
   async findOneWithMaterialy(ID: number): Promise<Materialy> {

@@ -1,10 +1,10 @@
 <div class="container">
-    <form action="http://localhost:3000/uzytkownicy/add" method='post'>
+    <form action="http://localhost:3000/uzytkownicy/{{#if uzytkownicy.Login}}update{{else}}add{{/if}}" method='post'>
          <div class="mb-3">
             <label for="nazwa" class="form-label">Nazwa użytkownika</label>
-            <input type="text" class="form-control" id="nazwa" name="nazwa" value=''>
+            <input type="text" class="form-control" id="nazwa" name="nazwa" value='{{uzytkownicy.Login}}'>
             <label for="password" class="form-label">Hasło</label>   
-            <input type="password" name="password" id="password" class="form-control" />
+            <input type="password" name="password" id="password" class="form-control" value='{{uzytkownicy.Password}}' />
           </div>
           <button type="submit" class="btn btn-primary btn-sm">Zarejestruj</button>
     </form>

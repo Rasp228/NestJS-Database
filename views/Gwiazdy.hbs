@@ -13,7 +13,9 @@
             <th>ID</th>
             <th>Galaktyka</th>
             <th>Nazwa</th>
+            {{#if user.isAdmin }}
             <th>Akcje</th>
+            {{/if}}
         </tr>
             {{#each gwiazdy}}
                 <tr>  

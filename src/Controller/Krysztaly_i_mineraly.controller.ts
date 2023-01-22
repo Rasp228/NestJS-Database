@@ -1,4 +1,4 @@
-import {Body, Controller, Get, Param, Post, Render, Res, UseGuards} from '@nestjs/common';
+import {Body, Controller, Get, Param, Post, Query, Render, Res, UseGuards} from '@nestjs/common';
 import {HttpException} from '@nestjs/common/exceptions';
 import { Roles } from 'src/decorators/roles.decorator';
 import { User } from 'src/decorators/user.decorator';
@@ -16,8 +16,8 @@ export class Krysztaly_i_mineralyController {
   @Roles([UserRole.User, UserRole.Admin])
   @UseGuards(RolesGuard)
   @Get('lista')
-  async lista(@User() user, @Res() res) {
-    const krysztaly_i_mineraly = await this.Krysztaly_i_mineralyService.findAll();
+  async lista(@User() user, @Res() res, @Query() query) {
+    const krysztaly_i_mineraly = await this.Krysztaly_i_mineralyService.findAll(query.fraza);
     const planety = await this.PlanetyService.findAll();
     const ksiezyce = await this.KsiezyceService.findAll();
     return res.render('Krysztaly_i_mineraly', { planety, user, krysztaly_i_mineraly, ksiezyce });

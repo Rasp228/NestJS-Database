@@ -1,12 +1,13 @@
-import { Controller, Get, Param, Render } from '@nestjs/common';
+import { Controller, Get, Param, Render, Res } from '@nestjs/common';
 
 @Controller('error')
 export class ErrorController {
   @Get(':id')
-  @Render('error.hbs')
-  display(@Param() params) {
+  //@Render('error.hbs')
+  display(@Param() params, @Res() res) {
     const message = ErrorController.getMessage(params.id);
-    return { message };
+    //return { message };
+    return res.render('error', { layout: 'main_without_login', message });
   }
 
   public static getMessage(id: string): string {
@@ -16,6 +17,12 @@ export class ErrorController {
       case '1':
         message = 'Cannot be removed because contain some object!';
         break;
+        case '2':
+          message = "Uzytkownik juz istnieje";
+          break;
+          case '3':
+            message = "Nie usuwac Admina!";
+            break;
       default:
         message = 'Something went wrong :/...';
     }
